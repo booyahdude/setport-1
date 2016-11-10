@@ -4,7 +4,7 @@ Devuelve 0 si un número de puerto válido se ha pasado a través de la línea d
 Banderas:
     Rango válido Puerto 1 - 65535;
     -p, --port [port#]
-    -p, --port -e [PORT]
+    -p, --port -e, --environment [PORT]
     -h, --help, -?
     -!, --about
     

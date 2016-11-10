@@ -4,7 +4,7 @@ Returns 0 if a valid port number has been passed through the command line.
 Flags:
     Valid Port Range 1 - 65535;
     -p, --port [port#]
-    -p, --port -e [PORT]
+    -p, --port -e, --environment [PORT]
     -h, --help, -?
     -!, --about
     
