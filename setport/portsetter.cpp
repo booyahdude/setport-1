@@ -103,13 +103,13 @@ int main(int argc, char* args[]) {
             return 0;
         }
         
-        // if there are two arguments after program, chech if second argument is int value or -e
+        // if there are two arguments after program, chech if second argument is int value or -e/--environment
         if(argc == 3) {
             string portArg = args[2];
             char* charPtr = args[2];
             
             // check if second argument is an environment flag, set port to PORT
-            if(portArg == "-e") {
+            if(portArg == "-e" || portArg == "--environment") {
                 charPtr = getenv("PORT");
                 string charStr = "";
                 if(charPtr != NULL) charStr = charPtr;
@@ -142,12 +142,12 @@ int main(int argc, char* args[]) {
             return 0;
         }
         
-        // if there are four arguments, check if second argument is -e, check if third is environment variable
+        // if there are four arguments, check if second argument is -e or --environment, check if third is environment variable
         if(argc == 4) {
             string args2 = args[2];
             string args3 = args[3];
             
-            if(args2 != "-e") {
+            if(args2 != "-e" && args2 != "--environment") {
                 cout << msg.at(TOO_MANY_ARGS) << endl;
                 usage(lang);
                 return 666;

@@ -146,6 +146,128 @@ int main() {
         cout << "------------------------------ Test: Failed ------------------------------\n\n" << endl;
     }
     
+    //Code update 11/9/2016 adding test cases for new --environment switch
+    cout << "---------------- Testing for -e (PORT = 3114) parameter ---------------" << endl;
+    if(system("PORT=3114 && LANGUAGE=en ./portsetter.cpp.o -p -e >test.txt") == 0) {
+        cout << "Portsetter: Passed" << endl;
+        if(system("diff test.txt testText/listeningPort3114Env_en.txt") == 0) {
+            cout << "Expected output" << endl;
+            cout << "------------------------------ Test: Passed -----------------------------\n\n" << endl;
+        }
+        else {
+            cout << "Unexpected output" << endl;
+            cout << "------------------------------ Test: Failed ------------------------------\n\n" << endl;
+        }
+    }
+    else {
+        cout << "Portsetter: Failed" << endl;
+        cout << "------------------------------ Test: Failed ------------------------------\n\n" << endl;
+    }
+    
+    cout << "---------------- Testing for --environment (PORT = 3114) parameter ---------------" << endl;
+    if(system("PORT=3114 && LANGUAGE=en ./portsetter.cpp.o -p --environment >test.txt") == 0) {
+        cout << "Portsetter: Passed" << endl;
+        if(system("diff test.txt testText/listeningPort3114Env_en.txt") == 0) {
+            cout << "Expected output" << endl;
+            cout << "------------------------------ Test: Passed -----------------------------\n\n" << endl;
+        }
+        else {
+            cout << "Unexpected output" << endl;
+            cout << "------------------------------ Test: Failed ------------------------------\n\n" << endl;
+        }
+    }
+    else {
+        cout << "Portsetter: Failed" << endl;
+        cout << "------------------------------ Test: Failed ------------------------------\n\n" << endl;
+    }
+    
+    cout << "---------------- Testing for --port --environment (PORT = 3114) parameter ---------------" << endl;
+    if(system("PORT=3114 && LANGUAGE=en ./portsetter.cpp.o --port --environment >test.txt") == 0) {
+        cout << "Portsetter: Passed" << endl;
+        if(system("diff test.txt testText/listeningPort3114Env_en.txt") == 0) {
+            cout << "Expected output" << endl;
+            cout << "------------------------------ Test: Passed -----------------------------\n\n" << endl;
+        }
+        else {
+            cout << "Unexpected output" << endl;
+            cout << "------------------------------ Test: Failed ------------------------------\n\n" << endl;
+        }
+    }
+    else {
+        cout << "Portsetter: Failed" << endl;
+        cout << "------------------------------ Test: Failed ------------------------------\n\n" << endl;
+    }
+    
+    cout << "---------------- Testing for --port -environment (Should fail) parameter ---------------" << endl;
+    if(system("PORT=3114 && LANGUAGE=en ./portsetter.cpp.o --port -environment >test.txt") != 0) {
+        cout << "Portsetter: Failed" << endl;
+        if(system("diff test.txt testText/validParse_en.txt") == 0) {
+            cout << "Expected output" << endl;
+            cout << "------------------------------ Test: Passed -----------------------------\n\n" << endl;
+        }
+        else {
+            cout << "Unexpected output" << endl;
+            cout << "------------------------------ Test: Failed ------------------------------\n\n" << endl;
+        }
+    }
+    else {
+        cout << "Portsetter: Passed" << endl;
+        cout << "------------------------------ Test: Failed ------------------------------\n\n" << endl;
+    }
+    
+    cout << "---------------- Testing for --port --Environment (Should fail) parameter ---------------" << endl;
+    if(system("PORT=3114 && LANGUAGE=en ./portsetter.cpp.o --port --Environment >test.txt") != 0) {
+        cout << "Portsetter: Failed" << endl;
+        if(system("diff test.txt testText/validParse_en.txt") == 0) {
+            cout << "Expected output" << endl;
+            cout << "------------------------------ Test: Passed -----------------------------\n\n" << endl;
+        }
+        else {
+            cout << "Unexpected output" << endl;
+            cout << "------------------------------ Test: Failed ------------------------------\n\n" << endl;
+        }
+    }
+    else {
+        cout << "Portsetter: Passed" << endl;
+        cout << "------------------------------ Test: Failed ------------------------------\n\n" << endl;
+    }
+    
+    cout << "---------------- Testing for --port --environment BAR (BAR = 3116) parameter ---------------" << endl;
+    if(system("export BAR=3116 && LANGUAGE=en ./portsetter.cpp.o --port --environment BAR >test.txt") == 0) {
+        cout << "Portsetter: Passed" << endl;
+        if(system("diff test.txt testText/listeningPortBAREnv_en.txt") == 0) {
+            cout << "Expected output" << endl;
+            cout << "------------------------------ Test: Passed -----------------------------\n\n" << endl;
+        }
+        else {
+            cout << "Unexpected output" << endl;
+            cout << "------------------------------ Test: Failed ------------------------------\n\n" << endl;
+        }
+    }
+    else {
+        cout << "Portsetter: Failed" << endl;
+        cout << "------------------------------ Test: Failed ------------------------------\n\n" << endl;
+    }
+    
+    cout << "---------------- Testing for -p --environment BAR (BAR doesn't exist) parameter ---------------" << endl;
+    if(system("LANGUAGE=en ./portsetter.cpp.o -p --environment BAR >test.txt") != 0) {
+        cout << "Portsetter: Failed" << endl;
+        if(system("diff test.txt testText/envNotExist_en.txt") == 0) {
+            cout << "Expected output" << endl;
+            cout << "------------------------------ Test: Passed -----------------------------\n\n" << endl;
+        }
+        else {
+            cout << "Unexpected output" << endl;
+            cout << "------------------------------ Test: Failed ------------------------------\n\n" << endl;
+        }
+    }
+    else {
+        cout << "Portsetter: Passed" << endl;
+        cout << "------------------------------ Test: Failed ------------------------------\n\n" << endl;
+    }
+    
+    //End code update 11/9/2016
+    
     cout << "------------------------ Testing for -e pORT parameter ----------------------" << endl;
     if(system("LANGUAGE=en ./portsetter.cpp.o -p -e pORT >test.txt") == 0) {
         cout << "Portsetter: Passed" << endl;
