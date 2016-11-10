@@ -21,3 +21,6 @@ To run the test program type:
     ./testsetport.cpp.o
 The tests will output for both english and spanish tests if setport was successful, if the output was expected, and if the test
 passed for each test case.
+
+**Update 11/9/2013**
+* Added --environment switch (same functionality as -e switch)
